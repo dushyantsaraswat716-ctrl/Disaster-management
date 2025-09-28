@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --color-background: #F8FAFC; /* slate-50 */
+    --color-foreground: #1F2937; /* gray-800 */
+    --color-border: #E5E7EB; /* gray-200 */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #1E40AF; /* blue-800 */
+    
+    /* Card Colors */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #1F2937; /* gray-800 */
+    
+    /* Popover Colors */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #1F2937; /* gray-800 */
+    
+    /* Muted Colors */
+    --color-muted: #F3F4F6; /* gray-100 */
+    --color-muted-foreground: #6B7280; /* gray-500 */
+    
+    /* Primary Colors */
+    --color-primary: #1E40AF; /* blue-800 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #059669; /* emerald-600 */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #F59E0B; /* amber-500 */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* Success Colors */
+    --color-success: #10B981; /* emerald-500 */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    /* Warning Colors */
+    --color-warning: #F59E0B; /* amber-500 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    /* Error/Destructive Colors */
+    --color-error: #EF4444; /* red-500 */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #EF4444; /* red-500 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Surface Color */
+    --color-surface: #FFFFFF; /* white */
+    
+    /* Text Colors */
+    --color-text-primary: #1F2937; /* gray-800 */
+    --color-text-secondary: #6B7280; /* gray-500 */
+    
+    /* Border Radius */
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Emergency Alert Styles */
+  .emergency-alert {
+    @apply fixed top-0 left-0 right-0 z-[1000] bg-error text-error-foreground px-4 py-3 shadow-lg;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.15);
+  }
+  
+  /* Navigation Styles */
+  .nav-primary {
+    @apply sticky top-0 z-[100] bg-card border-b border-border;
+    height: 64px;
+  }
+  
+  .nav-item {
+    @apply px-4 py-2 rounded-md text-sm font-medium transition-all duration-150 ease-out;
+  }
+  
+  .nav-item:hover {
+    @apply bg-muted transform scale-[0.98];
+  }
+  
+  .nav-item.active {
+    @apply bg-primary text-primary-foreground;
+  }
+  
+  /* Card Styles */
+  .card {
+    @apply bg-card text-card-foreground rounded-lg border border-border;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-elevated {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button Styles */
+.btn-emergency  {
+    @apply bg-error text-error-foreground transition-all duration-150 ease-out;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+  }
+  
+  .btn-emergency:hover {
+    @apply transform scale-[0.98];
+  }
+  
+  /* Progress Indicator Styles */
+  .progress-bar {
+    @apply bg-muted rounded-full overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply bg-success h-full transition-all duration-300 ease-in-out;
+  }
+  
+  /* Animation Classes */
+  .animate-slide-down {
+    animation: slideDown 300ms ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 300ms ease-in-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 150ms ease-out;
+  }
+  
+  .animate-emergency-pulse {
+    animation: emergencyPulse 2s infinite;
+  }
+  
+  /* Quick Access Button */
+  .quick-access-btn {
+    @apply fixed bottom-6 right-6 z-[200] bg-error text-error-foreground rounded-full p-4 shadow-lg;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  }
+  
+  .quick-access-btn:hover {
+    @apply transform scale-105;
+  }
+}
+
+@layer utilities {
+  /* Emergency Priority */
+  .emergency-priority {
+    @apply !z-[1100];
+  }
+  
+  /* Spacing System */
+  .spacing-base {
+    @apply p-4; /* 16px base unit */
+  }
+  
+  .spacing-nav {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  
+  /* Touch Targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Text Utilities */
+  .text-emergency {
+    @apply text-error;
+  }
+  
+  .text-success-state {
+    @apply text-success;
+  }
+  
+  .text-warning-state {
+    @apply text-warning;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes emergencyPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .nav-primary {
+    height: 56px;
+  }
+  
+  .quick-access-btn {
+    @apply bottom-4 right-4 p-3;
+  }
+  
+  .spacing-nav {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
